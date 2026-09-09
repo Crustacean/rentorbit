@@ -282,7 +282,7 @@ export function MarketplaceExperience() {
   return (
     <main className="min-h-screen">
       <header className="border-b border-orbit-line bg-white/90">
-        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mx-auto grid max-w-[1600px] gap-3 px-4 py-4 lg:grid-cols-3 lg:items-center">
           <div className="flex min-w-0 items-center gap-3">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-orbit-green text-white">
               <span className="text-lg font-black">RO</span>
@@ -292,6 +292,18 @@ export function MarketplaceExperience() {
               <p className="truncate text-sm text-neutral-600">Kenya rentals, services, personnel</p>
             </div>
           </div>
+          <label className="block w-full max-w-xl justify-self-center">
+            <span className="sr-only">Search</span>
+            <div className="flex items-center gap-2 border border-orbit-line bg-orbit-field px-3 py-2">
+              <Search className="h-4 w-4 shrink-0 text-neutral-500" aria-hidden="true" />
+              <input
+                value={filters.query}
+                onChange={(event) => patchFilters({ query: event.target.value })}
+                className="min-w-0 flex-1 bg-transparent text-sm outline-none"
+                placeholder="camera, crew, generator"
+              />
+            </div>
+          </label>
           <div className="grid grid-cols-3 gap-2 text-xs sm:flex sm:flex-wrap sm:justify-end">
             <StatusPill icon={<ShieldCheck className="h-4 w-4" />} label="KYC required" tone="green" />
             <StatusPill icon={<MessageCircle className="h-4 w-4" />} label="Listing DMs" tone="sky" />
@@ -308,19 +320,6 @@ export function MarketplaceExperience() {
               <Filter className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
-
-          <label className="mb-3 block">
-            <span className="mb-1 block text-xs font-semibold uppercase text-neutral-500">Search</span>
-            <div className="flex items-center gap-2 border border-orbit-line bg-orbit-field px-3 py-2">
-              <Search className="h-4 w-4 shrink-0 text-neutral-500" aria-hidden="true" />
-              <input
-                value={filters.query}
-                onChange={(event) => patchFilters({ query: event.target.value })}
-                className="min-w-0 flex-1 bg-transparent text-sm outline-none"
-                placeholder="camera, crew, generator"
-              />
-            </div>
-          </label>
 
           <div className="grid gap-3">
             <FilterSelect label="Category" value={filters.category} onChange={(value) => patchFilters({ category: value })}>
